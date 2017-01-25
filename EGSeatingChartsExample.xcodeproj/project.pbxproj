@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32ABCC385C4240573333F1BD /* Pods_EGSeatingChartsExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7AE3A5D8A52CCC054190CAD /* Pods_EGSeatingChartsExampleTests.framework */; };
 		38F7CA701E392B450076DC5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA6F1E392B450076DC5F /* main.m */; };
 		38F7CA731E392B450076DC5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA721E392B450076DC5F /* AppDelegate.m */; };
 		38F7CA761E392B450076DC5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA751E392B450076DC5F /* ViewController.m */; };
@@ -15,6 +16,18 @@
 		38F7CA7E1E392B450076DC5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F7CA7C1E392B450076DC5F /* LaunchScreen.storyboard */; };
 		38F7CA891E392B450076DC5F /* EGSeatingChartsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA881E392B450076DC5F /* EGSeatingChartsExampleTests.m */; };
 		38F7CA941E392B450076DC5F /* EGSeatingChartsExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA931E392B450076DC5F /* EGSeatingChartsExampleUITests.m */; };
+		38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */; };
+		38F7CAB71E392B560076DC5F /* GetTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA51E392B560076DC5F /* GetTicketView.m */; };
+		38F7CAB81E392B560076DC5F /* LegendaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA71E392B560076DC5F /* LegendaScrollView.m */; };
+		38F7CAB91E392B560076DC5F /* SeatingChartsOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */; };
+		38F7CABA1E392B560076DC5F /* SeatingChartsOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */; };
+		38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */; };
+		38F7CABC1E392B560076DC5F /* SeatingChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */; };
+		38F7CABD1E392B560076DC5F /* SeatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB11E392B560076DC5F /* SeatNode.m */; };
+		38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB31E392B560076DC5F /* SectorNode.m */; };
+		38F7CABF1E392B560076DC5F /* SelectTicketVariantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */; };
+		38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAC21E392BC00076DC5F /* UIColor+EGCharts.m */; };
+		C3F2A6F38A657BC5917F90EF /* Pods_EGSeatingChartsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C154AF91B04F9631B94B5466 /* Pods_EGSeatingChartsExample.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		095115D78BB471B212AA8AE6 /* Pods-EGSeatingChartsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		38F7CA6B1E392B450076DC5F /* EGSeatingChartsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EGSeatingChartsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F7CA6F1E392B450076DC5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		38F7CA711E392B450076DC5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +65,33 @@
 		38F7CA8F1E392B450076DC5F /* EGSeatingChartsExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EGSeatingChartsExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F7CA931E392B450076DC5F /* EGSeatingChartsExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EGSeatingChartsExampleUITests.m; sourceTree = "<group>"; };
 		38F7CA951E392B450076DC5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterDonationSeatView.h; sourceTree = "<group>"; };
+		38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterDonationSeatView.m; sourceTree = "<group>"; };
+		38F7CAA41E392B560076DC5F /* GetTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTicketView.h; sourceTree = "<group>"; };
+		38F7CAA51E392B560076DC5F /* GetTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTicketView.m; sourceTree = "<group>"; };
+		38F7CAA61E392B560076DC5F /* LegendaScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegendaScrollView.h; sourceTree = "<group>"; };
+		38F7CAA71E392B560076DC5F /* LegendaScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegendaScrollView.m; sourceTree = "<group>"; };
+		38F7CAA81E392B560076DC5F /* SeatingChartsOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsOrderCell.h; sourceTree = "<group>"; };
+		38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsOrderCell.m; sourceTree = "<group>"; };
+		38F7CAAA1E392B560076DC5F /* SeatingChartsOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsOrdersViewController.h; sourceTree = "<group>"; };
+		38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsOrdersViewController.m; sourceTree = "<group>"; };
+		38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsScene.h; sourceTree = "<group>"; };
+		38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsScene.m; sourceTree = "<group>"; };
+		38F7CAAE1E392B560076DC5F /* SeatingChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsViewController.h; sourceTree = "<group>"; };
+		38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsViewController.m; sourceTree = "<group>"; };
+		38F7CAB01E392B560076DC5F /* SeatNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatNode.h; sourceTree = "<group>"; };
+		38F7CAB11E392B560076DC5F /* SeatNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatNode.m; sourceTree = "<group>"; };
+		38F7CAB21E392B560076DC5F /* SectorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorNode.h; sourceTree = "<group>"; };
+		38F7CAB31E392B560076DC5F /* SectorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorNode.m; sourceTree = "<group>"; };
+		38F7CAB41E392B560076DC5F /* SelectTicketVariantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTicketVariantViewController.h; sourceTree = "<group>"; };
+		38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTicketVariantViewController.m; sourceTree = "<group>"; };
+		38F7CAC11E392BC00076DC5F /* UIColor+EGCharts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+EGCharts.h"; sourceTree = "<group>"; };
+		38F7CAC21E392BC00076DC5F /* UIColor+EGCharts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+EGCharts.m"; sourceTree = "<group>"; };
+		498D670E78E0DAB1DEDEE768 /* Pods-EGSeatingChartsExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		49D295CBBE41189576CE9292 /* Pods-EGSeatingChartsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExample/Pods-EGSeatingChartsExample.release.xcconfig"; sourceTree = "<group>"; };
+		C154AF91B04F9631B94B5466 /* Pods_EGSeatingChartsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EGSeatingChartsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7AE3A5D8A52CCC054190CAD /* Pods_EGSeatingChartsExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EGSeatingChartsExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC50C42710247B6D06F5A1CC /* Pods-EGSeatingChartsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExample/Pods-EGSeatingChartsExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F2A6F38A657BC5917F90EF /* Pods_EGSeatingChartsExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32ABCC385C4240573333F1BD /* Pods_EGSeatingChartsExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		074319D13F0EBF0966B11C2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EC50C42710247B6D06F5A1CC /* Pods-EGSeatingChartsExample.debug.xcconfig */,
+				49D295CBBE41189576CE9292 /* Pods-EGSeatingChartsExample.release.xcconfig */,
+				498D670E78E0DAB1DEDEE768 /* Pods-EGSeatingChartsExampleTests.debug.xcconfig */,
+				095115D78BB471B212AA8AE6 /* Pods-EGSeatingChartsExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		38F7CA621E392B450076DC5F = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +139,8 @@
 				38F7CA871E392B450076DC5F /* EGSeatingChartsExampleTests */,
 				38F7CA921E392B450076DC5F /* EGSeatingChartsExampleUITests */,
 				38F7CA6C1E392B450076DC5F /* Products */,
+				074319D13F0EBF0966B11C2B /* Pods */,
+				F47F84A36D503BF7C27ECF2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +157,8 @@
 		38F7CA6D1E392B450076DC5F /* EGSeatingChartsExample */ = {
 			isa = PBXGroup;
 			children = (
+				38F7CAA11E392B560076DC5F /* SeatingCharts */,
+				38F7CAC01E392BC00076DC5F /* Helpers */,
 				38F7CA711E392B450076DC5F /* AppDelegate.h */,
 				38F7CA721E392B450076DC5F /* AppDelegate.m */,
 				38F7CA741E392B450076DC5F /* ViewController.h */,
@@ -140,6 +198,51 @@
 			path = EGSeatingChartsExampleUITests;
 			sourceTree = "<group>";
 		};
+		38F7CAA11E392B560076DC5F /* SeatingCharts */ = {
+			isa = PBXGroup;
+			children = (
+				38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */,
+				38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */,
+				38F7CAA41E392B560076DC5F /* GetTicketView.h */,
+				38F7CAA51E392B560076DC5F /* GetTicketView.m */,
+				38F7CAA61E392B560076DC5F /* LegendaScrollView.h */,
+				38F7CAA71E392B560076DC5F /* LegendaScrollView.m */,
+				38F7CAA81E392B560076DC5F /* SeatingChartsOrderCell.h */,
+				38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */,
+				38F7CAAA1E392B560076DC5F /* SeatingChartsOrdersViewController.h */,
+				38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */,
+				38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */,
+				38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */,
+				38F7CAAE1E392B560076DC5F /* SeatingChartsViewController.h */,
+				38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */,
+				38F7CAB01E392B560076DC5F /* SeatNode.h */,
+				38F7CAB11E392B560076DC5F /* SeatNode.m */,
+				38F7CAB21E392B560076DC5F /* SectorNode.h */,
+				38F7CAB31E392B560076DC5F /* SectorNode.m */,
+				38F7CAB41E392B560076DC5F /* SelectTicketVariantViewController.h */,
+				38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */,
+			);
+			path = SeatingCharts;
+			sourceTree = "<group>";
+		};
+		38F7CAC01E392BC00076DC5F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				38F7CAC11E392BC00076DC5F /* UIColor+EGCharts.h */,
+				38F7CAC21E392BC00076DC5F /* UIColor+EGCharts.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F47F84A36D503BF7C27ECF2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C154AF91B04F9631B94B5466 /* Pods_EGSeatingChartsExample.framework */,
+				C7AE3A5D8A52CCC054190CAD /* Pods_EGSeatingChartsExampleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +250,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38F7CA981E392B450076DC5F /* Build configuration list for PBXNativeTarget "EGSeatingChartsExample" */;
 			buildPhases = (
+				67B432E643DB1F74E3886216 /* [CP] Check Pods Manifest.lock */,
 				38F7CA671E392B450076DC5F /* Sources */,
 				38F7CA681E392B450076DC5F /* Frameworks */,
 				38F7CA691E392B450076DC5F /* Resources */,
+				28DE6DD8849F09AB608433A7 /* [CP] Embed Pods Frameworks */,
+				596295B264B85835C996C626 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,9 +270,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 38F7CA9B1E392B450076DC5F /* Build configuration list for PBXNativeTarget "EGSeatingChartsExampleTests" */;
 			buildPhases = (
+				E35D6D3438A2151FEEBE08AF /* [CP] Check Pods Manifest.lock */,
 				38F7CA801E392B450076DC5F /* Sources */,
 				38F7CA811E392B450076DC5F /* Frameworks */,
 				38F7CA821E392B450076DC5F /* Resources */,
+				663F5F6FFB34DEC16E5E49CB /* [CP] Embed Pods Frameworks */,
+				D79A7246579573E0C1CBCC9F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,14 +377,118 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28DE6DD8849F09AB608433A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EGSeatingChartsExample/Pods-EGSeatingChartsExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		596295B264B85835C996C626 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EGSeatingChartsExample/Pods-EGSeatingChartsExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		663F5F6FFB34DEC16E5E49CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		67B432E643DB1F74E3886216 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D79A7246579573E0C1CBCC9F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E35D6D3438A2151FEEBE08AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		38F7CA671E392B450076DC5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38F7CAB71E392B560076DC5F /* GetTicketView.m in Sources */,
+				38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */,
+				38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */,
+				38F7CAB91E392B560076DC5F /* SeatingChartsOrderCell.m in Sources */,
+				38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */,
+				38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */,
+				38F7CABF1E392B560076DC5F /* SelectTicketVariantViewController.m in Sources */,
 				38F7CA761E392B450076DC5F /* ViewController.m in Sources */,
+				38F7CABA1E392B560076DC5F /* SeatingChartsOrdersViewController.m in Sources */,
 				38F7CA731E392B450076DC5F /* AppDelegate.m in Sources */,
+				38F7CAB81E392B560076DC5F /* LegendaScrollView.m in Sources */,
 				38F7CA701E392B450076DC5F /* main.m in Sources */,
+				38F7CABD1E392B560076DC5F /* SeatNode.m in Sources */,
+				38F7CABC1E392B560076DC5F /* SeatingChartsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +633,7 @@
 		};
 		38F7CA991E392B450076DC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC50C42710247B6D06F5A1CC /* Pods-EGSeatingChartsExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EGSeatingChartsExample/Info.plist;
@@ -431,6 +645,7 @@
 		};
 		38F7CA9A1E392B450076DC5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49D295CBBE41189576CE9292 /* Pods-EGSeatingChartsExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = EGSeatingChartsExample/Info.plist;
@@ -442,6 +657,7 @@
 		};
 		38F7CA9C1E392B450076DC5F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 498D670E78E0DAB1DEDEE768 /* Pods-EGSeatingChartsExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EGSeatingChartsExampleTests/Info.plist;
@@ -454,6 +670,7 @@
 		};
 		38F7CA9D1E392B450076DC5F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 095115D78BB471B212AA8AE6 /* Pods-EGSeatingChartsExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = EGSeatingChartsExampleTests/Info.plist;
