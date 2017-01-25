@@ -7,17 +7,16 @@
 //
 
 #import "SeatNode.h"
-#import "Seat.h"
-#import "Ticket.h"
-#import "Helper.h"
-#import "UIColor+Extensions.h"
+//#import "Seat.h"
+//#import "Ticket.h"
+//#import "Helper.h"
+#import "UIColor+EGCharts.h"
 
-enum SeatState
-{
-    WasBuyed,
-    HiddenType,
-    Colored
-};
+typedef enum : NSUInteger {
+    SeatStateBought = 0,
+    SeatStateHiddenType = 1,
+    SeatStateColoured = 2
+} SeatState;
 
 @interface SeatNode()
 @property (nonatomic, strong) SKSpriteNode *backgroundSprite;
@@ -27,7 +26,7 @@ enum SeatState
 
 @implementation SeatNode
 
-- (instancetype)initWithSeat:(Seat *)seat ticketTypes:(NSArray *)ticketTypes
+- (instancetype)initWithSeat:(id<SeatDatasource>)seat event:(id<EventDatasource>)event
 {
     if(self = [super init])
     {
@@ -35,43 +34,28 @@ enum SeatState
         self.seat = seat;
         self.userInteractionEnabled = YES;
         
-        // 0 куплен
-        // 1 скрытый тикет тайп
-        // 2 цветной
+        __block SeatState seatState = SeatStateBought;
         
-        enum SeatState seatState = WasBuyed;
-        
-        NSString *ticketColor;
-        for(Ticket *ticket in ticketTypes)
-        {
-            NSArray *_seats = ticket.seat_ids_attribute;
-            
-            if([_seats containsObject:seat.id_attribute])
+        __block UIColor *ticketColor;
+        [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticketType, NSInteger idx, BOOL *stop) {
+            if ([ticketType containsSeat:seat])
             {
-                ticketColor = ticket.seat_color_attribute;
-                if(!ticket.hidden_attribute.boolValue)
-                {
-                    seatState = Colored;
-                    break;
-                }
-                else
-                {
-                    seatState = HiddenType;
-                    break;
-                }
+                ticketColor = [ticketType seatColor];
+                seatState = [ticketType hidden]?SeatStateHiddenType:SeatStateColoured;
+                *stop = YES;
             }
-        }
+        }];
         
         UIColor *color;
         
-        if(seat.is_hidden_attribute.boolValue)
+        if([seat hidden])
         {
             self.enable = NO;
             color = [UIColor clearColor];
         }
-        else if(!seat.ticket_type_id_attribute ||
-                seatState == WasBuyed ||
-                seatState == HiddenType)
+        else if(![seat hasTicketType] ||
+                seatState == SeatStateBought ||
+                seatState == SeatStateHiddenType)
         {
             self.enable = NO;
             color = [UIColor disabledButtonColor];
@@ -79,10 +63,10 @@ enum SeatState
         else
         {
             self.enable = YES;
-            color = [Helper colorFromHexString: ticketColor];
+            color = ticketColor;
         }
 
-        if(!seat.is_hidden_attribute.boolValue)
+        if(![seat hidden])
         {
             self.backgroundSprite = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"seat.png"] color:color size:CGSizeMake(30, 30)];
             self.backgroundSprite.colorBlendFactor = 1.0f;
@@ -93,7 +77,7 @@ enum SeatState
             self.selectSprite.alpha = 0.0f;
             [self addChild:self.selectSprite];
             
-            if(seat.has_wheelchair_access_attribute.boolValue)
+            if ([seat hasWheelchairAccess])
             {
                 self.wheelchairSprite = [[SKSpriteNode alloc] initWithTexture:[SKTexture textureWithImageNamed:@"wheelchair.png"]];
                 self.wheelchairSprite.size = CGSizeMake(23, 23);
@@ -104,7 +88,7 @@ enum SeatState
             else
             {
                 SKLabelNode *numLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
-                numLabel.text = self.seat.number_attribute;
+                numLabel.text = [self.seat number];
                 numLabel.fontSize = 16.0f;
                 numLabel.position = CGPointMake(0, -7.5);
                 [self.backgroundSprite addChild:numLabel];

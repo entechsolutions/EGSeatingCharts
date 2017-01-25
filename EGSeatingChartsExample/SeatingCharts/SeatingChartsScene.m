@@ -11,22 +11,22 @@
 #import "SectorNode.h"
 #import <GLKit/GLKMath.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "UIColor+Extensions.h"
-#import "SeatingChart.h"
-#import "Section.h"
-#import "Shape.h"
-#import "ShapeType.h"
-#import "Row.h"
-#import "Seat.h"
-#import "Event.h"
-#import "Instance.h"
-#import "Ticket.h"
-#import "AvailableSeat.h"
-#import "AvailableSection.h"
-#import "SeatCartItemDto.h"
-#import "TicketVariant.h"
-#import "Helper.h"
-#import "InterfaceMode.h"
+#import "UIColor+EGCharts.h"
+//#import "SeatingChart.h"
+//#import "Section.h"
+//#import "Shape.h"
+//#import "ShapeType.h"
+//#import "Row.h"
+//#import "Seat.h"
+//#import "Event.h"
+//#import "Instance.h"
+//#import "Ticket.h"
+//#import "AvailableSeat.h"
+//#import "AvailableSection.h"
+//#import "SeatCartItemDto.h"
+//#import "TicketVariant.h"
+//#import "Helper.h"
+//#import "InterfaceMode.h"
 
 static int borderShift    = 0;
 static int seatWidth      = 30;
@@ -71,68 +71,55 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
 @property (nonatomic) float minScale;
 @property (nonatomic) BOOL flag;
 @property (nonatomic) CGSize mySKNodeSize;
-- (CGSize)sectionSize:(Section *)section;
-- (float)yCircleForX:(float)x curve:(float)curveValue section:(Section *)section;
+- (CGSize)sectionSize:(id<ChartSectionDatasource>)section;
+- (float)yCircleForX:(float)x curve:(float)curveValue section:(id<ChartSectionDatasource>)section;
 - (void)handleZoomFrom:(UIPinchGestureRecognizer *)recognizer;
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer;
 @end
 
 @implementation SeatingChartsScene
 
-- (instancetype)initWithSize:(CGSize)size
+- (instancetype)initWithSize:(CGSize)size mapSize:(CGSize)mapSize bottomSpace:(CGFloat)bottomSpace
 {
     if (self = [super initWithSize:size])
     {
         self.backgroundColor = [UIColor seatingChartsBackgound];
         
-        if([InterfaceMode iPadFullScreen])
-        {
-            mapScreenWidth  = 704.0f;
-            mapScreenHeight = 500.0f;
-            bottomShift = 100.0f;
-        }
-        else
-        {
-            mapScreenWidth  = 320.0f;
-            mapScreenHeight = 240.0f;
-            bottomShift = 120.0f;
-        }
+        mapScreenWidth  = mapSize.width;
+        mapScreenHeight = mapSize.height;
+        bottomShift = bottomSpace;
     }
     return self;
 }
 
-- (void) createSeats:(SeatingChart *)seatingChart
-      availableSeats:(NSArray *)ticketTypes
+- (void) createSeats:(id<SeatingChartDatasource>)seatingChart event:(id<EventDatasource>)event// availableSeats:(NSArray<id<TicketTypeDatasource>> *)availableSeats
 {
     CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
     
     [self removeAllChildren];
         
-    Section *sectionMinX, *sectionMaxX;
-    Section *sectionMinY, *sectionMaxY;
+    id<ChartSectionDatasource> sectionMinX, sectionMaxX;
+    id<ChartSectionDatasource> sectionMinY, sectionMaxY;
     
-    NSArray *seactionsArray = seatingChart.sections.allObjects;
+    NSArray <id<ChartSectionDatasource>> *seactionsArray = [seatingChart sortedSections];
     
     sectionMinX = sectionMaxX = seactionsArray[0];
     sectionMinY = sectionMaxY = seactionsArray[0];
     
-    for(int i = 1; i < seactionsArray.count; ++i)
-    {
-        Section *section = seactionsArray[i];
-        
-        if(section.pos_x_attribute.floatValue < sectionMinX.pos_x_attribute.floatValue)
+    for (id<ChartSectionDatasource> section in seactionsArray) {        
+        if([section pos].x < [sectionMinX pos].x)
             sectionMinX = section;
-        if(section.pos_x_attribute.floatValue > sectionMaxX.pos_x_attribute.floatValue)
+        if([section pos].x > [sectionMaxX pos].x)
             sectionMaxX = section;
         
-        if(section.pos_y_attribute.floatValue < sectionMinY.pos_y_attribute.floatValue)
+        if([section pos].y < [sectionMinY pos].y)
             sectionMinY = section;
-        if(section.pos_y_attribute.floatValue > sectionMaxY.pos_y_attribute.floatValue)
+        if([section pos].y > [sectionMaxY pos].y)
             sectionMaxY = section;
     }
 
-    CGSize size = CGSizeMake((sectionMaxX.pos_x_attribute.floatValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + [self sectionSize:sectionMaxX].width,
-                             (sectionMaxY.pos_y_attribute.floatValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb + [self sectionSize:sectionMinY].height * 0.5f + [self sectionSize:sectionMaxY].height * 0.5f);
+    CGSize size = CGSizeMake(([sectionMaxX pos].x - [sectionMinX pos].x) * scaleFromWeb + [self sectionSize:sectionMaxX].width,
+                             ([sectionMaxY pos].y - [sectionMinY pos].y) * scaleFromWeb + [self sectionSize:sectionMinY].height * 0.5f + [self sectionSize:sectionMaxY].height * 0.5f);
 
     if (size.width < 0) {
         size.width = 0;
@@ -160,11 +147,11 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     
     self.sectors = [[NSMutableArray alloc] init];
     
-    for(Section *section in seatingChart.sections)
+    for (id<ChartSectionDatasource> section in [seatingChart sortedSections])
     {
         NSLog(@"section0 elapsed time: %.3f", CFAbsoluteTimeGetCurrent() - start);
         
-        float sectionWidth = (section.grid_width_attribute.intValue + 1) * (config_seat_size + config_seat_diff) - config_seat_diff+ 2*config_seat_size;
+        float sectionWidth = ([section gridWidth] + 1) * (config_seat_size + config_seat_diff) - config_seat_diff+ 2*config_seat_size;
 
         //section.curve_percent_attribute = [NSNumber numberWithFloat:-section.curve_percent_attribute.floatValue];
         //NSLog(@"section=%@",section.name_attribute);
@@ -177,61 +164,67 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
         
         NSMutableArray *elements = [[NSMutableArray alloc] init];
         
-        for(Row *row in section.rows)
+        for(id<ChartRowDatasource> row in [section sortedRows])
         {
             float PI = 3.14f;
-            float tan_val = tan((90.0f - fabs(section.skew_attribute.floatValue)) * PI / 180.0f);
+            float tan_val = tan((90.0f - fabs([section skew])) * PI / 180.0f);
             
-            float fullLength = section.grid_width_attribute.intValue * (config_seat_size + config_seat_diff) - config_seat_diff;
+            float fullLength = [section gridWidth] * (config_seat_size + config_seat_diff) - config_seat_diff;
             
             float currentLength;
             
-            if(row.seats_in_row_attribute == nil)
+            if ([row seatsInRow] == nil)
             {
                 currentLength = fullLength;
             }
             else
             {
-                if(row.seats_in_row_attribute.intValue > section.grid_width_attribute.intValue)
-                    currentLength = section.grid_width_attribute.intValue * (config_seat_size + config_seat_diff) - config_seat_diff;
+                if ([[row seatsInRow] integerValue]> [section gridWidth])
+                    currentLength = [section gridWidth] * (config_seat_size + config_seat_diff) - config_seat_diff;
                 else
-                    currentLength = row.seats_in_row_attribute.intValue * (config_seat_size + config_seat_diff) - config_seat_diff;
+                    currentLength = [[row seatsInRow] integerValue] * (config_seat_size + config_seat_diff) - config_seat_diff;
             }
             
-            float boundSeatSize = config_seat_size + config_seat_diff; // размер места
+            float boundSeatSize = config_seat_size + config_seat_diff; // seat size
             
-            float mx = (section.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + boundSeatSize + (section.grid_width_attribute.intValue * boundSeatSize - config_seat_diff) / 2.0f;
-            float my = size.height - (section.pos_y_attribute.intValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb -(row.grid_row_attribute.intValue * boundSeatSize + config_seat_size / 2.0f);
+            float mx = (trunc([section pos].x) - [sectionMinX pos].x) * scaleFromWeb + boundSeatSize + ([section gridWidth] * boundSeatSize - config_seat_diff) / 2.0f;
+            float my = size.height - (trunc([section pos].y) - [sectionMinY pos].y) * scaleFromWeb - ([row gridRow] * boundSeatSize + config_seat_size / 2.0f);
             
             
-            float cy = my - ((section.curve_percent_attribute.floatValue < 0 ? -1 : 1) * section.grid_width_attribute.intValue * config_seat_maxCurveRadius * (1.1f - log(fabs(section.curve_percent_attribute.floatValue)) / log(100.0f)));
+            float cy = my - (([section curvePercent] < 0 ? -1 : 1) * [section gridWidth] * config_seat_maxCurveRadius * (1.1f - log(fabs([section curvePercent])) / log(100.0f)));
             
             //cy -= (section.curve_percent_attribute.floatValue < 0) ? - 3 * config_seat_size : 3 * config_seat_size;
             
             
-            float leftX = mx - (boundSeatSize * section.grid_width_attribute.intValue + config_seat_diff) / 2.0f + config_seat_diff + config_seat_size / 2.0f;
+            float leftX = mx - (boundSeatSize * [section gridWidth] + config_seat_diff) / 2.0f + config_seat_diff + config_seat_size / 2.0f;
             
             float leftY = my - config_seat_size / 2.0f;
             float radius = sqrtf((leftX - mx)*(leftX - mx) + (leftY - cy)*(leftY - cy));
             
             BOOL wasNumber = NO;
             
-            NSArray *sortedSeats = [section.seats sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"grid_column_attribute" ascending:YES]]];
+            NSArray <id<SeatDatasource>> *sortedSeats = [[section seats] sortedArrayUsingComparator:^NSComparisonResult(id <SeatDatasource> _Nonnull obj1, id <SeatDatasource> _Nonnull obj2) {
+                if ([obj1 gridColumn] < [obj2 gridColumn]) {
+                    return NSOrderedAscending;
+                }
+                if ([obj1 gridColumn] == [obj2 gridColumn]) {
+                    return NSOrderedSame;
+                }
+                return NSOrderedDescending;
+            }];
             
-            for(Seat *seat in sortedSeats)
-            {
-                if([seat.grid_row_attribute isEqualToNumber:row.grid_row_attribute])
-                {
-                    int seatIndex = seat.grid_column_attribute.intValue;
-                    float rx = (section.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + (fullLength - currentLength) / 2.0f + (seatIndex + 1) * boundSeatSize;
-                    float ry = size.height - (section.pos_y_attribute.intValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb -row.grid_row_attribute.intValue * (config_seat_size + config_seat_diff);
+            for (id<SeatDatasource> seat in sortedSeats) {
+                if([seat gridRow] == [row gridRow]) {
+                    int seatIndex = [seat gridColumn];
+                    float rx = (trunc([section pos].x) - [sectionMinX pos].x) * scaleFromWeb + (fullLength - currentLength) / 2.0f + (seatIndex + 1) * boundSeatSize;
+                    float ry = size.height - (trunc([section pos].y) - [sectionMinY pos].y) * scaleFromWeb - [row gridRow] * (config_seat_size + config_seat_diff);
                     
                     
-                    if (section.curve_percent_attribute.floatValue != 0)
+                    if ([section curvePercent] != 0)
                     {
                         float rmx = rx + config_seat_size / 2.0f;
-                        ry = cy -((section.curve_percent_attribute.floatValue < 0 ? 1 : -1) *
-                                  ((my - ry) + sqrt(radius * radius - (rmx - mx) * (rmx - mx)) + config_seat_size / 2.0f))
+                        ry = cy - (([section curvePercent] < 0 ? 1 : -1) *
+                                   ((my - ry) + sqrt(radius * radius - (rmx - mx) * (rmx - mx)) + config_seat_size / 2.0f))
                         + config_seat_size;
                     }
                     
@@ -239,18 +232,18 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
                     
                     float dx = fabs(ax - fullLength / 2.0f);
                     float dy = tan_val != 0.0f ? fabs(dx / tan_val) : 0.0f;
-                    if (section.skew_attribute.floatValue > 0)
+                    if ([section skew] > 0)
                         dy = ax < fullLength / 2.0f ? -dy : dy;
                     else
                         dy = ax < fullLength / 2.0f ? dy : -dy;
                     
                     
-                    SeatNode *seatNode = [[SeatNode alloc] initWithSeat:seat ticketTypes:ticketTypes];
+                    SeatNode *seatNode = [[SeatNode alloc] initWithSeat:seat event:event];
                     seatNode.size = CGSizeMake(40, 40);
                     seatNode.enable4zoom = NO;
                     seatNode.position =  (CGPoint){ rx + 15, ry+dy - 15};
                     
-                    if(seat.grid_row_attribute.intValue == section.rows.count - 1)
+                    if ([seat gridRow] == [section sortedRows].count - 1)
                     {
                         if(firstSeatMin)
                         {
@@ -263,7 +256,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
                                 seatWithMinY = ry+dy;
                         }
                     }
-                    if([seat.grid_row_attribute isEqualToNumber:@0])
+                    if ([seat gridRow] == 0)
                     {
                         if(firstSeatMax)
                         {
@@ -277,12 +270,12 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
                         }
                     }
           
-                    if(!wasNumber && !seat.is_hidden_attribute.boolValue)
+                    if(!wasNumber && ![seat hidden])
                     {
                         wasNumber = YES;
                         SKLabelNode *numLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
                         numLabel.fontColor = [UIColor blackColor];
-                        numLabel.text = row.number_attribute;
+                        numLabel.text = [row number];
                         numLabel.fontSize = 16.0f;
                         numLabel.position = (CGPoint){ rx + 15 - config_seat_size - config_seat_diff, ry+dy - 15 - 5};
                         //(CGPoint){(section.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + config_seat_diff,ry+dy - config_seat_size + config_seat_diff};
@@ -299,24 +292,24 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
             }
         }
         
-        // делаем обложку секции и добавляем на нее элементы
+        // creating section cover and adding elements there
         SectorNode *sectorCower = [[SectorNode alloc] init];
         sectorCower.userInteractionEnabled = YES;
         //[sectorCower setAnchorPoint:(CGPoint){0.5,0.5}];
         sectorCower.mySize = CGSizeMake(sectionWidth, seatWithMaxY- seatWithMinY + config_seat_size * 4);
         sectorCower.position = (CGPoint)
         {
-            (section.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + sectorCower.mySize.width * 0.5f - config_seat_size, seatWithMinY + (seatWithMaxY- seatWithMinY) * 0.5f
+            (trunc([section pos].x) - [sectionMinX pos].x) * scaleFromWeb + sectorCower.mySize.width * 0.5f - config_seat_size, seatWithMinY + (seatWithMaxY- seatWithMinY) * 0.5f
         };
         sectorCower.delegate = self;
         [self.mySkNode addChild:sectorCower];
         [self.sectors addObject:sectorCower];
         
-        if(!section.hide_name_attribute.boolValue)
+        if(![section hideName])
         {
             SKLabelNode *name = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
             name.fontColor = [UIColor blackColor];
-            name.text = section.name_attribute;
+            name.text = [section name];
             name.fontSize = 30.0f;
             name.position =  (CGPoint){0, sectorCower.mySize.height * 0.5f - 35};
             [sectorCower addChild:name];
@@ -324,46 +317,47 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
         
         for(SKNode *seatNode in elements)
         {
-            seatNode.position = CGPointMake(seatNode.position.x - (section.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb - sectorCower.mySize.width * 0.5f + config_seat_size, seatNode.position.y - sectorCower.position.y);
+            seatNode.position = CGPointMake(seatNode.position.x - ([section pos].x - [sectionMinX pos].x) * scaleFromWeb - sectorCower.mySize.width * 0.5f + config_seat_size, seatNode.position.y - sectorCower.position.y);
             [sectorCower addChild:seatNode];
         }
         
-        sectorCower.zRotation = -DEGREES_RADIANS(section.rotation_angle_attribute.floatValue);
+        sectorCower.zRotation = -DEGREES_RADIANS([section rotation]);
         
         NSLog(@"section1 elapsed time: %.3f", CFAbsoluteTimeGetCurrent() - start);
     }
     
-    for(Shape *shape in seatingChart.shapes)
+    for(id<ShapeDatasource> shape in seatingChart.shapes)
     {
-        if(shape.shapeType.id_attribute.intValue == 10)
+        CGSize scale = [shape scale];
+        if ([shape shapeTypeID] == 10)
         {
-            SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(shape.scale_x_attribute.floatValue * scaleFromWeb, shape.scale_y_attribute.floatValue * scaleFromWeb)];
+            SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(scale.width * scaleFromWeb, scale.height * scaleFromWeb)];
             
             shapeNode.strokeColor = [SKColor blackColor];
             shapeNode.lineWidth = 3;
             shapeNode.position = (CGPoint)
             {
-                (shape.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb + shapeNode.frame.size.width * 0.5f,
-                size.height - ((shape.pos_y_attribute.intValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb + shapeNode.frame.size.height * 0.5f)
+                (trunc([shape pos].x) - [sectionMinX pos].x) * scaleFromWeb + shapeNode.frame.size.width * 0.5f,
+                size.height - ((trunc([shape pos].x) - [sectionMinY pos].y) * scaleFromWeb + shapeNode.frame.size.height * 0.5f)
             };
             
-            shapeNode.zRotation = -DEGREES_RADIANS(shape.rotation_angle_attribute.floatValue);
+            shapeNode.zRotation = -DEGREES_RADIANS([shape rotationAngle]);
             
             SKLabelNode *name = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
             name.fontColor = [UIColor blackColor];
-            name.text = shape.name_attribute;
+            name.text = [shape name];
             name.fontSize = 20.0f;
             name.position =  (CGPoint){0, -8};
             [shapeNode addChild:name];
             
             [self.mySkNode addChild:shapeNode];
         }
-        else if(shape.shapeType.id_attribute.intValue == 20)
+        else if([shape shapeTypeID] == 20)
         {
             SKShapeNode *yourline = [SKShapeNode node];
             CGMutablePathRef pathToDraw = CGPathCreateMutable();
-            CGPathMoveToPoint(pathToDraw, NULL, (shape.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb, size.height - (shape.pos_y_attribute.intValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb );
-            CGPathAddLineToPoint(pathToDraw, NULL, (shape.pos_x_attribute.intValue - sectionMinX.pos_x_attribute.floatValue) * scaleFromWeb+ shape.scale_x_attribute.floatValue * scaleFromWeb, size.height - (shape.pos_y_attribute.intValue - sectionMinY.pos_y_attribute.floatValue) * scaleFromWeb - shape.scale_y_attribute.floatValue * scaleFromWeb);
+            CGPathMoveToPoint(pathToDraw, NULL, (trunc([shape pos].x) - [sectionMinX pos].x) * scaleFromWeb, size.height - (trunc([shape pos].y) - [sectionMinY pos].y) * scaleFromWeb );
+            CGPathAddLineToPoint(pathToDraw, NULL, (trunc([shape pos].x) - [sectionMinX pos].x) * scaleFromWeb + scale.width * scaleFromWeb, size.height - (trunc([shape pos].y) - [sectionMinY pos].y) * scaleFromWeb - scale.height * scaleFromWeb);
             yourline.path = pathToDraw;
             yourline.lineWidth = 3.0f;
             [yourline setStrokeColor:[UIColor blackColor]];
@@ -374,12 +368,13 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     NSLog(@"SC elapsed time: %.3f", elapsed);
 }
 
-- (CGSize)sectionSize:(Section *)section
+- (CGSize)sectionSize:(id<ChartSectionDatasource>)section
 {
-    return CGSizeMake(oneSeatWidth * (section.grid_width_attribute.intValue + 1) - 10 + borderShift * 2, oneSeatWidth * (section.grid_height_attribute.intValue) - 10 + borderShift * 2);
+    return CGSizeMake(oneSeatWidth * ([section gridWidth] + 1) - 10 + borderShift * 2,
+                      oneSeatWidth * ([section gridHeight]) - 10 + borderShift * 2);
 }
 
-- (float)yCircleForX:(float)x curve:(float)curveValue section:(Section *)section
+- (float)yCircleForX:(float)x curve:(float)curveValue section:(id<ChartSectionDatasource>) section
 {
     float maxCurveRadius = 500.0f;
     //float curveValue = 100.0f;
@@ -387,10 +382,10 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     
     CGSize normalSectorSize = [self sectionSize:section];
     
-    float x0 = - normalSectorSize.width * 0.5f + borderShift + oneSeatWidth + (section.grid_width_attribute.intValue - 1) * oneSeatWidth * 0.5f;
+    float x0 = - normalSectorSize.width * 0.5f + borderShift + oneSeatWidth + ([section gridWidth] - 1) * oneSeatWidth * 0.5f;
     float y0 =  - height - normalSectorSize.height * 0.5f + borderShift + seatWidth;
     
-    CGPoint leftLowSeatPoint = (CGPoint){borderShift + oneSeatWidth - normalSectorSize.width * 0.5f, -borderShift - (section.grid_height_attribute.intValue - 1) * oneSeatWidth + normalSectorSize.height * 0.5f};
+    CGPoint leftLowSeatPoint = (CGPoint){borderShift + oneSeatWidth - normalSectorSize.width * 0.5f, -borderShift - ([section gridHeight] - 1) * oneSeatWidth + normalSectorSize.height * 0.5f};
     float R = sqrtf((leftLowSeatPoint.x - x0)*(leftLowSeatPoint.x - x0) + (leftLowSeatPoint.y - y0)*(leftLowSeatPoint.y - y0));
     
     return sqrtf(R*R - (x - x0)*(x - x0)) + y0;
@@ -586,7 +581,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     }    
 }
 
-- (void) updateSelectedSeats:(NSArray *)ticketTypes
+- (void) updateSelectedSeats:(BOOL (^)(id<SeatDatasource>))selectedCallback
 {
     for(SectorNode *sector in self.sectors)
     {
@@ -594,21 +589,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
         {
             if([node isKindOfClass:[SeatNode class]])
             {
-                BOOL selected = false;
-                
-                for(Ticket *ticket in ticketTypes)
-                {
-                    for(TicketVariant *ticketVariant in ticket.variants)
-                    {
-                        for(SeatCartItemDto *seatCartItemDto in ticketVariant.cart_items_dto_base)
-                        {
-                            if([((SeatNode *)node).seat.id_attribute isEqualToNumber: seatCartItemDto.seat.id_attribute])
-                            {
-                                selected = true;
-                            }
-                        }
-                    }
-                }
+                BOOL selected = selectedCallback(((SeatNode *)node).seat);
 
                 if(!selected)
                     [((SeatNode *)node) unselectSprite];

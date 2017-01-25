@@ -7,8 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "EGDatasources.h"
 
-@class SeatingChart;
 @class SeatNode;
 
 @protocol SeatingChartsProtocol <NSObject>
@@ -23,9 +23,9 @@
 @property (weak, nonatomic) id<SeatingChartsProtocol> delegateSC;
 @property (weak, nonatomic) UIButton *zoomOutButton;
 
-- (instancetype) initWithSize:(CGSize)size;
-- (void) createSeats:(SeatingChart *)seatingChart availableSeats:(NSArray *)availableSeats;
-- (void) updateSelectedSeats:(NSArray *)ticketTypes;
+- (instancetype) initWithSize:(CGSize)size mapSize:(CGSize)mapSize bottomSpace:(CGFloat)bottomSpace;
+- (void) createSeats:(id<SeatingChartDatasource>)seatingChart event:(id<EventDatasource>)event;//availableSeats:(NSArray <id<TicketTypeDatasource>> *)availableSeats;
+- (void) updateSelectedSeats:(BOOL(^)(id<SeatDatasource> seat))selectedCallback;
 - (void) zoomOut;
 
 @end

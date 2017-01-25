@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class Event;
+#import "EGDatasources.h"
 
 @interface LegendaScrollView : UIScrollView
 
-- (void)fillWithEntity:(Event *)event width:(CGFloat)width;
+- (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width;
 
 @end

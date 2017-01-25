@@ -17,15 +17,10 @@
 		38F7CA891E392B450076DC5F /* EGSeatingChartsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA881E392B450076DC5F /* EGSeatingChartsExampleTests.m */; };
 		38F7CA941E392B450076DC5F /* EGSeatingChartsExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA931E392B450076DC5F /* EGSeatingChartsExampleUITests.m */; };
 		38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */; };
-		38F7CAB71E392B560076DC5F /* GetTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA51E392B560076DC5F /* GetTicketView.m */; };
 		38F7CAB81E392B560076DC5F /* LegendaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA71E392B560076DC5F /* LegendaScrollView.m */; };
-		38F7CAB91E392B560076DC5F /* SeatingChartsOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */; };
-		38F7CABA1E392B560076DC5F /* SeatingChartsOrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */; };
 		38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */; };
-		38F7CABC1E392B560076DC5F /* SeatingChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */; };
 		38F7CABD1E392B560076DC5F /* SeatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB11E392B560076DC5F /* SeatNode.m */; };
 		38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB31E392B560076DC5F /* SectorNode.m */; };
-		38F7CABF1E392B560076DC5F /* SelectTicketVariantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */; };
 		38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAC21E392BC00076DC5F /* UIColor+EGCharts.m */; };
 		C3F2A6F38A657BC5917F90EF /* Pods_EGSeatingChartsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C154AF91B04F9631B94B5466 /* Pods_EGSeatingChartsExample.framework */; };
 /* End PBXBuildFile section */
@@ -49,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		095115D78BB471B212AA8AE6 /* Pods-EGSeatingChartsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		38D7C0F31E39439000C0883E /* EGDatasources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EGDatasources.h; sourceTree = "<group>"; };
 		38F7CA6B1E392B450076DC5F /* EGSeatingChartsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EGSeatingChartsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F7CA6F1E392B450076DC5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		38F7CA711E392B450076DC5F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,24 +63,14 @@
 		38F7CA951E392B450076DC5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterDonationSeatView.h; sourceTree = "<group>"; };
 		38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterDonationSeatView.m; sourceTree = "<group>"; };
-		38F7CAA41E392B560076DC5F /* GetTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetTicketView.h; sourceTree = "<group>"; };
-		38F7CAA51E392B560076DC5F /* GetTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetTicketView.m; sourceTree = "<group>"; };
 		38F7CAA61E392B560076DC5F /* LegendaScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegendaScrollView.h; sourceTree = "<group>"; };
 		38F7CAA71E392B560076DC5F /* LegendaScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegendaScrollView.m; sourceTree = "<group>"; };
-		38F7CAA81E392B560076DC5F /* SeatingChartsOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsOrderCell.h; sourceTree = "<group>"; };
-		38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsOrderCell.m; sourceTree = "<group>"; };
-		38F7CAAA1E392B560076DC5F /* SeatingChartsOrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsOrdersViewController.h; sourceTree = "<group>"; };
-		38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsOrdersViewController.m; sourceTree = "<group>"; };
 		38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsScene.h; sourceTree = "<group>"; };
 		38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsScene.m; sourceTree = "<group>"; };
-		38F7CAAE1E392B560076DC5F /* SeatingChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsViewController.h; sourceTree = "<group>"; };
-		38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatingChartsViewController.m; sourceTree = "<group>"; };
 		38F7CAB01E392B560076DC5F /* SeatNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatNode.h; sourceTree = "<group>"; };
 		38F7CAB11E392B560076DC5F /* SeatNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeatNode.m; sourceTree = "<group>"; };
 		38F7CAB21E392B560076DC5F /* SectorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectorNode.h; sourceTree = "<group>"; };
 		38F7CAB31E392B560076DC5F /* SectorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectorNode.m; sourceTree = "<group>"; };
-		38F7CAB41E392B560076DC5F /* SelectTicketVariantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTicketVariantViewController.h; sourceTree = "<group>"; };
-		38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTicketVariantViewController.m; sourceTree = "<group>"; };
 		38F7CAC11E392BC00076DC5F /* UIColor+EGCharts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+EGCharts.h"; sourceTree = "<group>"; };
 		38F7CAC21E392BC00076DC5F /* UIColor+EGCharts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+EGCharts.m"; sourceTree = "<group>"; };
 		498D670E78E0DAB1DEDEE768 /* Pods-EGSeatingChartsExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -201,26 +187,17 @@
 		38F7CAA11E392B560076DC5F /* SeatingCharts */ = {
 			isa = PBXGroup;
 			children = (
+				38D7C0F31E39439000C0883E /* EGDatasources.h */,
 				38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */,
 				38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */,
-				38F7CAA41E392B560076DC5F /* GetTicketView.h */,
-				38F7CAA51E392B560076DC5F /* GetTicketView.m */,
 				38F7CAA61E392B560076DC5F /* LegendaScrollView.h */,
 				38F7CAA71E392B560076DC5F /* LegendaScrollView.m */,
-				38F7CAA81E392B560076DC5F /* SeatingChartsOrderCell.h */,
-				38F7CAA91E392B560076DC5F /* SeatingChartsOrderCell.m */,
-				38F7CAAA1E392B560076DC5F /* SeatingChartsOrdersViewController.h */,
-				38F7CAAB1E392B560076DC5F /* SeatingChartsOrdersViewController.m */,
 				38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */,
 				38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */,
-				38F7CAAE1E392B560076DC5F /* SeatingChartsViewController.h */,
-				38F7CAAF1E392B560076DC5F /* SeatingChartsViewController.m */,
 				38F7CAB01E392B560076DC5F /* SeatNode.h */,
 				38F7CAB11E392B560076DC5F /* SeatNode.m */,
 				38F7CAB21E392B560076DC5F /* SectorNode.h */,
 				38F7CAB31E392B560076DC5F /* SectorNode.m */,
-				38F7CAB41E392B560076DC5F /* SelectTicketVariantViewController.h */,
-				38F7CAB51E392B560076DC5F /* SelectTicketVariantViewController.m */,
 			);
 			path = SeatingCharts;
 			sourceTree = "<group>";
@@ -475,20 +452,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38F7CAB71E392B560076DC5F /* GetTicketView.m in Sources */,
 				38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */,
 				38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */,
-				38F7CAB91E392B560076DC5F /* SeatingChartsOrderCell.m in Sources */,
 				38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */,
 				38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */,
-				38F7CABF1E392B560076DC5F /* SelectTicketVariantViewController.m in Sources */,
 				38F7CA761E392B450076DC5F /* ViewController.m in Sources */,
-				38F7CABA1E392B560076DC5F /* SeatingChartsOrdersViewController.m in Sources */,
 				38F7CA731E392B450076DC5F /* AppDelegate.m in Sources */,
 				38F7CAB81E392B560076DC5F /* LegendaScrollView.m in Sources */,
 				38F7CA701E392B450076DC5F /* main.m in Sources */,
 				38F7CABD1E392B560076DC5F /* SeatNode.m in Sources */,
-				38F7CABC1E392B560076DC5F /* SeatingChartsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +694,7 @@
 				38F7CA9A1E392B450076DC5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38F7CA9B1E392B450076DC5F /* Build configuration list for PBXNativeTarget "EGSeatingChartsExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -730,6 +703,7 @@
 				38F7CA9D1E392B450076DC5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		38F7CA9E1E392B450076DC5F /* Build configuration list for PBXNativeTarget "EGSeatingChartsExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -738,6 +712,7 @@
 				38F7CAA01E392B450076DC5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

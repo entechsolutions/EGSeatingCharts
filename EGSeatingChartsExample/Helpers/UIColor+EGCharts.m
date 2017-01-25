@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Антон Ковальчук. All rights reserved.
 //
 
-#import "UIColor+Extensions.h"
+#import "UIColor+EGCharts.h"
 #import "InterfaceMode.h"
 
 @implementation UIColor (Extensions)

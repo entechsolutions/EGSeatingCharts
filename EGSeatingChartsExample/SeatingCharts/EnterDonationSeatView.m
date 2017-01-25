@@ -8,7 +8,7 @@
 
 #import "EnterDonationSeatView.h"
 #import "UIView+AutoLayout.h"
-#import "UIColor+Extensions.h"
+#import "UIColor+EGCharts.h"
 
 @interface EnterDonationSeatView() <UITextFieldDelegate>
 @property (nonatomic, strong) UIButton *backgroundGrayView;

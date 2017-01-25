@@ -7,8 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "EGDatasources.h"
 
-@class Seat;
 @class SeatNode;
 
 @protocol SeatNodeProtocol <NSObject>
@@ -17,10 +17,10 @@
 @end
 
 @interface SeatNode : SKSpriteNode
-- (instancetype)initWithSeat:(Seat *)seat
-                 ticketTypes:(NSArray *)ticketTypes;
+- (instancetype)initWithSeat:(id<SeatDatasource>)seat
+                       event:(id<EventDatasource>)event;
 - (void)unselectSprite;
-@property (nonatomic, weak) Seat *seat;
+@property (nonatomic, weak) id<SeatDatasource> seat;
 @property (nonatomic, weak) id<SeatNodeProtocol> delegate;
 @property (nonatomic) BOOL select;
 @property (nonatomic) BOOL enable;
