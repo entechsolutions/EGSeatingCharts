@@ -15,7 +15,7 @@
 //#import "SeatingChart.h"
 //#import "Helper.h"
 #import "UIColor+EGCharts.h"
-#import "UIView+AutoLayout.h"
+#import <UIView_AutoLayout/UIView+AutoLayout.h>
 
 @implementation LegendaScrollView
 
