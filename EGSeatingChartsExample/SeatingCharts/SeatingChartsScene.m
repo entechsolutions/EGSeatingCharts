@@ -323,7 +323,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
             shapeNode.position = (CGPoint)
             {
                 (trunc([shape pos].x) - [sectionMinX pos].x) * scaleFromWeb + shapeNode.frame.size.width * 0.5f,
-                size.height - ((trunc([shape pos].x) - [sectionMinY pos].y) * scaleFromWeb + shapeNode.frame.size.height * 0.5f)
+                size.height - ((trunc([shape pos].y) - [sectionMinY pos].y) * scaleFromWeb + shapeNode.frame.size.height * 0.5f)
             };
             
             shapeNode.zRotation = -DEGREES_RADIANS([shape rotationAngle]);
