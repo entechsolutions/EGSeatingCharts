@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		32ABCC385C4240573333F1BD /* Pods_EGSeatingChartsExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7AE3A5D8A52CCC054190CAD /* Pods_EGSeatingChartsExampleTests.framework */; };
+		380A59C51E3A7B49007B2708 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380A59C41E3A7B49007B2708 /* SpriteKit.framework */; };
+		380A59C81E3A7BFB007B2708 /* ChartSKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A59C71E3A7BFB007B2708 /* ChartSKView.m */; };
+		380A59CB1E3A7F17007B2708 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 380A59CA1E3A7F17007B2708 /* Event.m */; };
+		380A59D01E3A860A007B2708 /* seat.png in Resources */ = {isa = PBXBuildFile; fileRef = 380A59CD1E3A860A007B2708 /* seat.png */; };
+		380A59D11E3A860A007B2708 /* seatBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 380A59CE1E3A860A007B2708 /* seatBorder.png */; };
+		380A59D21E3A860A007B2708 /* wheelchair.png in Resources */ = {isa = PBXBuildFile; fileRef = 380A59CF1E3A860A007B2708 /* wheelchair.png */; };
 		38F7CA701E392B450076DC5F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA6F1E392B450076DC5F /* main.m */; };
 		38F7CA731E392B450076DC5F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA721E392B450076DC5F /* AppDelegate.m */; };
 		38F7CA761E392B450076DC5F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA751E392B450076DC5F /* ViewController.m */; };
@@ -43,6 +49,14 @@
 
 /* Begin PBXFileReference section */
 		095115D78BB471B212AA8AE6 /* Pods-EGSeatingChartsExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EGSeatingChartsExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EGSeatingChartsExampleTests/Pods-EGSeatingChartsExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		380A59C41E3A7B49007B2708 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		380A59C61E3A7BFB007B2708 /* ChartSKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartSKView.h; sourceTree = "<group>"; };
+		380A59C71E3A7BFB007B2708 /* ChartSKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartSKView.m; sourceTree = "<group>"; };
+		380A59C91E3A7F17007B2708 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		380A59CA1E3A7F17007B2708 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		380A59CD1E3A860A007B2708 /* seat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seat.png; sourceTree = "<group>"; };
+		380A59CE1E3A860A007B2708 /* seatBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = seatBorder.png; sourceTree = "<group>"; };
+		380A59CF1E3A860A007B2708 /* wheelchair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheelchair.png; sourceTree = "<group>"; };
 		38D7C0F31E39439000C0883E /* EGDatasources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EGDatasources.h; sourceTree = "<group>"; };
 		38F7CA6B1E392B450076DC5F /* EGSeatingChartsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EGSeatingChartsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F7CA6F1E392B450076DC5F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -82,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380A59C51E3A7B49007B2708 /* SpriteKit.framework in Frameworks */,
 				C3F2A6F38A657BC5917F90EF /* Pods_EGSeatingChartsExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +130,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		380A59CC1E3A860A007B2708 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				380A59CD1E3A860A007B2708 /* seat.png */,
+				380A59CE1E3A860A007B2708 /* seatBorder.png */,
+				380A59CF1E3A860A007B2708 /* wheelchair.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		38F7CA621E392B450076DC5F = {
 			isa = PBXGroup;
 			children = (
@@ -140,13 +165,18 @@
 		38F7CA6D1E392B450076DC5F /* EGSeatingChartsExample */ = {
 			isa = PBXGroup;
 			children = (
+				380A59CC1E3A860A007B2708 /* Resources */,
 				38F7CAA11E392B560076DC5F /* SeatingCharts */,
 				38F7CAC01E392BC00076DC5F /* Helpers */,
 				38F7CA711E392B450076DC5F /* AppDelegate.h */,
 				38F7CA721E392B450076DC5F /* AppDelegate.m */,
+				380A59C61E3A7BFB007B2708 /* ChartSKView.h */,
+				380A59C71E3A7BFB007B2708 /* ChartSKView.m */,
 				38F7CA741E392B450076DC5F /* ViewController.h */,
 				38F7CA751E392B450076DC5F /* ViewController.m */,
 				38F7CA771E392B450076DC5F /* Main.storyboard */,
+				380A59C91E3A7F17007B2708 /* Event.h */,
+				380A59CA1E3A7F17007B2708 /* Event.m */,
 				38F7CA7A1E392B450076DC5F /* Assets.xcassets */,
 				38F7CA7C1E392B450076DC5F /* LaunchScreen.storyboard */,
 				38F7CA7F1E392B450076DC5F /* Info.plist */,
@@ -209,6 +239,7 @@
 		F47F84A36D503BF7C27ECF2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				380A59C41E3A7B49007B2708 /* SpriteKit.framework */,
 				C154AF91B04F9631B94B5466 /* Pods_EGSeatingChartsExample.framework */,
 				C7AE3A5D8A52CCC054190CAD /* Pods_EGSeatingChartsExampleTests.framework */,
 			);
@@ -327,7 +358,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380A59D11E3A860A007B2708 /* seatBorder.png in Resources */,
+				380A59D01E3A860A007B2708 /* seat.png in Resources */,
 				38F7CA7E1E392B450076DC5F /* LaunchScreen.storyboard in Resources */,
+				380A59D21E3A860A007B2708 /* wheelchair.png in Resources */,
 				38F7CA7B1E392B450076DC5F /* Assets.xcassets in Resources */,
 				38F7CA791E392B450076DC5F /* Main.storyboard in Resources */,
 			);
@@ -448,6 +482,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */,
+				380A59C81E3A7BFB007B2708 /* ChartSKView.m in Sources */,
+				380A59CB1E3A7F17007B2708 /* Event.m in Sources */,
 				38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */,
 				38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */,
 				38F7CA761E392B450076DC5F /* ViewController.m in Sources */,

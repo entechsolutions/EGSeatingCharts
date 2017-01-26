@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "SeatingChartsScene.h"
+#import "ChartSKView.h"
+#import "Event.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet ChartSKView *spriteKitView;
 
 @end
 
@@ -16,9 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    SeatingChartsScene *scene = [[SeatingChartsScene alloc] initWithSize:self.view.bounds.size
+                                                                 mapSize:CGSizeMake(320.0f, 240.0f)
+                                                             bottomSpace:80.0];
+    [self.spriteKitView presentScene:scene];
+    [scene createSeats:[[DummyChart alloc] init]
+                 event:[[DummyEvent alloc] init]];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
