@@ -67,7 +67,7 @@
     __block NSInteger currentTicket = 0;
     __block NSInteger pageCount = 0;
     
-    [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticket, NSInteger idx, BOOL *stop) {
+    [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticket, BOOL *stop) {
         if ([ticket hidden] || [ticket isAddon]) {
             
         } else {

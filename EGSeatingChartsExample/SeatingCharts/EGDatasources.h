@@ -8,6 +8,7 @@
 
 #ifndef EGDatasources_h
 #define EGDatasources_h
+#import <UIKit/UIKit.h>
 
 @protocol ShapeDatasource <NSObject>
 - (NSInteger)shapeTypeID;
@@ -18,6 +19,7 @@
 @end
 
 @protocol SeatDatasource <NSObject>
+- (NSNumber *)id;
 - (NSInteger)gridRow;
 - (NSInteger)gridColumn;
 - (BOOL)hidden;
@@ -35,7 +37,7 @@
 
 @protocol ChartSectionDatasource <NSObject>
 //- (void)enumerateSeats:(void(^)(id<SeatDatasource> seat, NSInteger idx, BOOL *stop)) callback;
-- (NSArray <id<SeatDatasource>> *)seats;
+- (NSArray <id<SeatDatasource>> *)seatsArray;
 - (NSArray <id<ChartRowDatasource>> *)sortedRows;
 
 - (CGPoint)pos;
@@ -51,7 +53,7 @@
 
 @protocol SeatingChartDatasource
 - (NSArray <id<ChartSectionDatasource>> *)sortedSections;
-- (NSMutableArray <id<ShapeDatasource>> *)shapes;
+- (NSMutableArray <id<ShapeDatasource>> *)shapesArray;
 @end
 
 @protocol TicketVariantDatasource <NSObject>
@@ -68,7 +70,7 @@
 @end
 
 @protocol EventDatasource
-- (void)enumerateTicketTypes:(void(^)(id<TicketTypeDatasource> ticketType, NSInteger idx, BOOL *stop)) callback;
+- (void)enumerateTicketTypes:(void(^)(id<TicketTypeDatasource> ticketType, BOOL *stop)) callback;
 @end
 
 

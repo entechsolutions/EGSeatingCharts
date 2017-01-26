@@ -16,7 +16,6 @@
 		38F7CA7E1E392B450076DC5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38F7CA7C1E392B450076DC5F /* LaunchScreen.storyboard */; };
 		38F7CA891E392B450076DC5F /* EGSeatingChartsExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA881E392B450076DC5F /* EGSeatingChartsExampleTests.m */; };
 		38F7CA941E392B450076DC5F /* EGSeatingChartsExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CA931E392B450076DC5F /* EGSeatingChartsExampleUITests.m */; };
-		38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */; };
 		38F7CAB81E392B560076DC5F /* LegendaScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAA71E392B560076DC5F /* LegendaScrollView.m */; };
 		38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAAD1E392B560076DC5F /* SeatingChartsScene.m */; };
 		38F7CABD1E392B560076DC5F /* SeatNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 38F7CAB11E392B560076DC5F /* SeatNode.m */; };
@@ -61,8 +60,6 @@
 		38F7CA8F1E392B450076DC5F /* EGSeatingChartsExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EGSeatingChartsExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F7CA931E392B450076DC5F /* EGSeatingChartsExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EGSeatingChartsExampleUITests.m; sourceTree = "<group>"; };
 		38F7CA951E392B450076DC5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterDonationSeatView.h; sourceTree = "<group>"; };
-		38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterDonationSeatView.m; sourceTree = "<group>"; };
 		38F7CAA61E392B560076DC5F /* LegendaScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegendaScrollView.h; sourceTree = "<group>"; };
 		38F7CAA71E392B560076DC5F /* LegendaScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegendaScrollView.m; sourceTree = "<group>"; };
 		38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeatingChartsScene.h; sourceTree = "<group>"; };
@@ -188,8 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				38D7C0F31E39439000C0883E /* EGDatasources.h */,
-				38F7CAA21E392B560076DC5F /* EnterDonationSeatView.h */,
-				38F7CAA31E392B560076DC5F /* EnterDonationSeatView.m */,
 				38F7CAA61E392B560076DC5F /* LegendaScrollView.h */,
 				38F7CAA71E392B560076DC5F /* LegendaScrollView.m */,
 				38F7CAAC1E392B560076DC5F /* SeatingChartsScene.h */,
@@ -453,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				38F7CABE1E392B560076DC5F /* SectorNode.m in Sources */,
-				38F7CAB61E392B560076DC5F /* EnterDonationSeatView.m in Sources */,
 				38F7CAC31E392BC00076DC5F /* UIColor+EGCharts.m in Sources */,
 				38F7CABB1E392B560076DC5F /* SeatingChartsScene.m in Sources */,
 				38F7CA761E392B450076DC5F /* ViewController.m in Sources */,

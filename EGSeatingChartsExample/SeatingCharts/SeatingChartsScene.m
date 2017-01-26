@@ -12,21 +12,6 @@
 #import <GLKit/GLKMath.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "UIColor+EGCharts.h"
-//#import "SeatingChart.h"
-//#import "Section.h"
-//#import "Shape.h"
-//#import "ShapeType.h"
-//#import "Row.h"
-//#import "Seat.h"
-//#import "Event.h"
-//#import "Instance.h"
-//#import "Ticket.h"
-//#import "AvailableSeat.h"
-//#import "AvailableSection.h"
-//#import "SeatCartItemDto.h"
-//#import "TicketVariant.h"
-//#import "Helper.h"
-//#import "InterfaceMode.h"
 
 static int borderShift    = 0;
 static int seatWidth      = 30;
@@ -203,7 +188,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
             
             BOOL wasNumber = NO;
             
-            NSArray <id<SeatDatasource>> *sortedSeats = [[section seats] sortedArrayUsingComparator:^NSComparisonResult(id <SeatDatasource> _Nonnull obj1, id <SeatDatasource> _Nonnull obj2) {
+            NSArray <id<SeatDatasource>> *sortedSeats = [[section seatsArray] sortedArrayUsingComparator:^NSComparisonResult(id <SeatDatasource> _Nonnull obj1, id <SeatDatasource> _Nonnull obj2) {
                 if ([obj1 gridColumn] < [obj2 gridColumn]) {
                     return NSOrderedAscending;
                 }
@@ -215,7 +200,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
             
             for (id<SeatDatasource> seat in sortedSeats) {
                 if([seat gridRow] == [row gridRow]) {
-                    int seatIndex = [seat gridColumn];
+                    NSInteger seatIndex = [seat gridColumn];
                     float rx = (trunc([section pos].x) - [sectionMinX pos].x) * scaleFromWeb + (fullLength - currentLength) / 2.0f + (seatIndex + 1) * boundSeatSize;
                     float ry = size.height - (trunc([section pos].y) - [sectionMinY pos].y) * scaleFromWeb - [row gridRow] * (config_seat_size + config_seat_diff);
                     
@@ -326,7 +311,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
         NSLog(@"section1 elapsed time: %.3f", CFAbsoluteTimeGetCurrent() - start);
     }
     
-    for(id<ShapeDatasource> shape in seatingChart.shapes)
+    for(id<ShapeDatasource> shape in [seatingChart shapesArray])
     {
         CGSize scale = [shape scale];
         if ([shape shapeTypeID] == 10)

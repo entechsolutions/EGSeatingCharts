@@ -37,7 +37,7 @@ typedef enum : NSUInteger {
         __block SeatState seatState = SeatStateBought;
         
         __block UIColor *ticketColor;
-        [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticketType, NSInteger idx, BOOL *stop) {
+        [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticketType, BOOL *stop) {
             if ([ticketType containsSeat:seat])
             {
                 ticketColor = [ticketType seatColor];
