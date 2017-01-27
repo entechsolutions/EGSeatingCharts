@@ -16,9 +16,6 @@
                      width:(CGFloat)width
                  pageCount:(NSInteger)pageCount
              currentTicket:(NSInteger)currentTicket {
-    if ((currentTicket % 3) == 0)
-        pageCount++;
-    
     UIView *colorView = [[UIView alloc] init];
     if (ticket == nil)
         colorView.backgroundColor = [UIColor lightGrayColor];
@@ -61,9 +58,7 @@
     __block NSInteger pageCount = 0;
     
     [event enumerateTicketTypes:^(id<TicketTypeDatasource> ticket, BOOL *stop) {
-        if ([ticket hidden] || [ticket isAddon]) {
-            
-        } else {
+        if (![ticket hidden] && ![ticket isAddon]) {
             if(!(currentTicket % 3))
                 pageCount++;
             [self fillPageWithTicket:ticket
