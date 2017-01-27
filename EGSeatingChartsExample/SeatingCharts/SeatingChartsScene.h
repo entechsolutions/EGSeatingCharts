@@ -24,7 +24,7 @@
 @property (weak, nonatomic) UIButton *zoomOutButton;
 
 - (instancetype) initWithSize:(CGSize)size mapSize:(CGSize)mapSize bottomSpace:(CGFloat)bottomSpace;
-- (void) createSeats:(id<SeatingChartDatasource>)seatingChart event:(id<EventDatasource>)event;//availableSeats:(NSArray <id<TicketTypeDatasource>> *)availableSeats;
+- (void) createSeats:(id<SeatingChartDatasource>)seatingChart event:(id<EventDatasource>)event;
 - (void) updateSelectedSeats:(BOOL(^)(id<SeatDatasource> seat))selectedCallback;
 - (void) zoomOut;
 

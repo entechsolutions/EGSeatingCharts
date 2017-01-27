@@ -10,6 +10,54 @@
 #define EGDatasources_h
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    ShapeTypeNone = 0,
+    ShapeTypeRectangle = 10,
+    ShapeTypeLine = 20
+} ShapeType;
+
+/*
+   https://apidoc.eventgrid.com/#2_0_customer_api_events__eventId__seating_chart
+   (seatingChart): SeatingChartDatasource
+     || \\
+     ||  \\
+     ||  (seatingChart.sections): ChartSectionDatasource
+     ||   [name:                      section name
+     ||    pos => posX, posY:         floating point coordinates of the section
+     ||    rotation => rotationAngle: rotation angle in degrees
+     ||    curvePercent:              ±0-100 curving coefficient of the section
+     ||    skew:                      skew factor (0-90 degrees)
+     ||    gridWidth:                 column count
+     ||    gridHeight:                row count
+     ||    hideName:                  if true, section name is not shown on the chart
+     ||    || \\
+     ||    ||  \\
+     ||    || (seatingChart.sections.seats): SeatDatasource
+     ||    ||  [id:                  unique seat id
+     ||    ||   number:              generic seat name, probably digits or letters
+     ||    ||   gridRow:             0-based row coordinate in the section
+     ||    ||   gridColumn:          0-based column coordinate of seat in the section
+     ||    ||   hidden => isHidden:  true if seat is hidden
+     ||    ||   hasWheelchairAccess: true if the seat has wheelchair access
+     ||    ||   reserved:            true if seat is reserved to be bought by the customer. Not in the API
+     ||    ||   hasTicketType:       true if seat has assigned ticketTypeId in the API]
+     ||    ||
+     ||    ||
+     ||    (seatingChart.sections.rows): ChartRowDatasource
+     ||     [gridRow:   0-based row coordinate in the section
+     ||      eatsInRow: seats in row (optional)
+     ||      number:    generic row name, probably digits or letters]
+     ||
+     ||
+     (seatsArray of SeatDatasource)
+      [shapeTypeID => shapeType.id: ShapeType enum value
+       name: shape name
+       pos => posX, posY: shape coordinates
+       scale => scaleX, scaleY: shape size
+       rotationAngle: angle of rotation (degrees)]
+ 
+ */
+
 @protocol ShapeDatasource <NSObject>
 - (NSInteger)shapeTypeID;
 - (CGSize)scale;
@@ -36,7 +84,6 @@
 @end
 
 @protocol ChartSectionDatasource <NSObject>
-//- (void)enumerateSeats:(void(^)(id<SeatDatasource> seat, NSInteger idx, BOOL *stop)) callback;
 - (NSArray <id<SeatDatasource>> *)seatsArray;
 - (NSArray <id<ChartRowDatasource>> *)sortedRows;
 
@@ -56,11 +103,7 @@
 - (NSMutableArray <id<ShapeDatasource>> *)shapesArray;
 @end
 
-@protocol TicketVariantDatasource <NSObject>
-@end
-
 @protocol TicketTypeDatasource <NSObject>
-//- (void)enumerateVariants:(void(^)(id<TicketVariantDatasource> variant, NSInteger idx, BOOL *stop)) callback;
 - (UIColor *)seatColor;
 - (NSString *)name;
 - (BOOL)hidden;

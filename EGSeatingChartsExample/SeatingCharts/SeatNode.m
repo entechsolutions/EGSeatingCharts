@@ -7,9 +7,6 @@
 //
 
 #import "SeatNode.h"
-//#import "Seat.h"
-//#import "Ticket.h"
-//#import "Helper.h"
 #import "UIColor+EGCharts.h"
 
 typedef enum : NSUInteger {
