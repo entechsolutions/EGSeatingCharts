@@ -7,15 +7,8 @@
 //
 
 #import "LegendaScrollView.h"
-//#import "Event.h"
-//#import "Ticket.h"
-//#import "TicketVariant.h"
-//#import "Section.h"
-//#import "Seat.h"
-//#import "SeatingChart.h"
-//#import "Helper.h"
 #import "UIColor+EGCharts.h"
-#import <UIView_AutoLayout/UIView+AutoLayout.h>
+#import <PureLayout/PureLayout.h>
 
 @implementation LegendaScrollView
 
@@ -80,6 +73,8 @@
             currentTicket++;
         }
     }];
+    if(!(currentTicket % 3))
+        pageCount++;
     [self fillPageWithTicket:nil width:width pageCount:pageCount currentTicket:currentTicket];
     
     self.contentSize = CGSizeMake(width * pageCount, 80.0f);

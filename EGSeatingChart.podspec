@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EGSeatingChart"
-  s.version      = "0.5"
+  s.version      = "0.6"
   s.summary      = "EventGrid seating chart spritekit scene (iOS)"
 
   s.description  = <<-DESC
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/entechsolutions/EGSeatingCharts.git", :tag => "0.5" }
+  s.source       = { :git => "https://github.com/entechsolutions/EGSeatingCharts.git", :tag => "0.6" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -127,6 +127,6 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  s.dependency "UIView+AutoLayout"
+  s.dependency "PureLayout"
 
 end
