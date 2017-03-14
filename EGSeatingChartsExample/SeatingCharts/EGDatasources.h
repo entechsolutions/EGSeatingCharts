@@ -11,10 +11,10 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    ShapeTypeNone = 0,
-    ShapeTypeRectangle = 10,
-    ShapeTypeLine = 20
-} ShapeType;
+    ChartShapeTypeNone = 0,
+    ChartShapeTypeRectangle = 10,
+    ChartShapeTypeLine = 20
+} ChartShapeType;
 
 /*
    https://apidoc.eventgrid.com/#2_0_customer_api_events__eventId__seating_chart

@@ -314,7 +314,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     for(id<ShapeDatasource> shape in [seatingChart shapesArray])
     {
         CGSize scale = [shape scale];
-        if ([shape shapeTypeID] == 10)
+        if ([shape shapeTypeID] == ChartShapeTypeRectangle)
         {
             SKShapeNode *shapeNode = [SKShapeNode shapeNodeWithRectOfSize:CGSizeMake(scale.width * scaleFromWeb, scale.height * scaleFromWeb)];
             
@@ -337,7 +337,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
             
             [self.mySkNode addChild:shapeNode];
         }
-        else if([shape shapeTypeID] == 20)
+        else if([shape shapeTypeID] == ChartShapeTypeLine)
         {
             SKShapeNode *yourline = [SKShapeNode node];
             CGMutablePathRef pathToDraw = CGPathCreateMutable();
