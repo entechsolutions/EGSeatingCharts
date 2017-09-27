@@ -15,7 +15,8 @@
 - (void)fillPageWithTicket:(id<TicketTypeDatasource>) ticket
                      width:(CGFloat)width
                  pageCount:(NSInteger)pageCount
-             currentTicket:(NSInteger)currentTicket {
+             currentTicket:(NSInteger)currentTicket
+                       top:(CGFloat)top {
     UIView *colorView = [[UIView alloc] init];
     if (ticket == nil)
         colorView.backgroundColor = [UIColor lightGrayColor];
@@ -26,7 +27,7 @@
     colorView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:colorView];
     [colorView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self withOffset:15.0f + (pageCount - 1) * width];
-    [colorView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self withOffset:-50.0f + 20.0f * (currentTicket % 3)];
+    [colorView autoPinEdge:ALEdgeTop toEdge:ALEdgeTop ofView:self withOffset:top + 20.0f * (currentTicket % 3)];
     [colorView autoSetDimension:ALDimensionHeight toSize:12.0f];
     [colorView autoSetDimension:ALDimensionWidth toSize:12.0f];
     
@@ -50,7 +51,7 @@
     
 }
 
-- (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width
+- (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width top:(CGFloat)top
 {
     [self.subviews makeObjectsPerformSelector: @selector(removeFromSuperview)];
     
@@ -64,15 +65,21 @@
             [self fillPageWithTicket:ticket
                                width:width
                            pageCount:pageCount
-                       currentTicket:currentTicket];
+                       currentTicket:currentTicket
+                                 top:top];
             currentTicket++;
         }
     }];
     if(!(currentTicket % 3))
         pageCount++;
-    [self fillPageWithTicket:nil width:width pageCount:pageCount currentTicket:currentTicket];
+    [self fillPageWithTicket:nil width:width pageCount:pageCount currentTicket:currentTicket top:top];
     
     self.contentSize = CGSizeMake(width * pageCount, 80.0f);
 }
+
+- (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width {
+    [self fillWithEntity:event width:width top:-50];
+}
+
 
 @end

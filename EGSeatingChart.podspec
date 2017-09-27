@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "EGSeatingChart"
-  s.version      = "0.8"
+  s.version      = "0.9"
   s.summary      = "EventGrid seating chart spritekit scene (iOS)"
 
   s.description  = <<-DESC
@@ -74,7 +74,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/entechsolutions/EGSeatingCharts.git", :tag => "0.8" }
+  s.source       = { :git => "https://github.com/entechsolutions/EGSeatingCharts.git", :tag => "0.9" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

@@ -12,5 +12,6 @@
 @interface LegendaScrollView : UIScrollView
 
 - (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width;
+- (void)fillWithEntity:(id<EventDatasource>)event width:(CGFloat)width top:(CGFloat)top;
 
 @end

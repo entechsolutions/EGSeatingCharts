@@ -134,7 +134,7 @@ typedef NS_ENUM(NSInteger, IIMySceneZPosition)
     
     for (id<ChartSectionDatasource> section in [seatingChart sortedSections])
     {
-        NSLog(@"section0 elapsed time: %.3f", CFAbsoluteTimeGetCurrent() - start);
+        //NSLog(@"section0 elapsed time: %.3f", CFAbsoluteTimeGetCurrent() - start);
         
         float sectionWidth = ([section gridWidth] + 1) * (config_seat_size + config_seat_diff) - config_seat_diff+ 2*config_seat_size;
 
